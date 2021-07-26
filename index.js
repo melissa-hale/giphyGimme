@@ -11,12 +11,14 @@ if (!process.env.NODE_ENV) {
 // set default view engine
 app.set('view engine', 'ejs');
 
+////// come back to this later
 // set up helmet to add appropriate HTTP headers
 // in prod only
-if (process.env.NODE_ENV) {
-    const helmet = require('helmet');
-    app.use(helmet());
-};
+// if (process.env.NODE_ENV) {
+//     const helmet = require('helmet');
+//     app.use(helmet());
+// };
+//////
 
 // set up compression
 const compression = require('compression');
