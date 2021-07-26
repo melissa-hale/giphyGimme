@@ -2,17 +2,25 @@
 const express = require('express');
 const app = express();
 
-// set up logger
+// set up logger for dev
 if (!process.env.NODE_ENV) {
     const logger = require('morgan');
     app.use(logger('dev'));
 };
 
-// set up static path
-app.use(express.static(__dirname + '/public'));
-
 // set default view engine
 app.set('view engine', 'ejs');
+
+// set up helmet to add appropriate HTTP headers
+// in prod only
+if (process.env.NODE_ENV) {
+    const helmet = require('helmet');
+    app.use(helmet());
+};
+
+// set up compression
+const compression = require('compression');
+app.use(compression());
 
 // ROUTES
 require("./routes/giphysearch.routes")(app);
