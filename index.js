@@ -3,8 +3,10 @@ const express = require('express');
 const app = express();
 
 // set up logger
-const logger = require('morgan');
-app.use(logger('dev'));
+if (!process.env.NODE_ENV) {
+    const logger = require('morgan');
+    app.use(logger('dev'));
+};
 
 // set up static path
 app.use(express.static(__dirname + '/public'));
