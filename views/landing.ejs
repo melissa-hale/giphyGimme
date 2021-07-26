@@ -1,0 +1,9 @@
+<%- include('partials/header'); %>
+
+<div class="row">
+    <% data.forEach(element => { %>
+        <%- include('./partials/giph', { element }) %> 
+    <% }); %>
+</div>
+
+<%- include('partials/footer'); %>
