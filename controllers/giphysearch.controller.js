@@ -3,6 +3,8 @@ const fetch = require('node-fetch');
 const { apiKey } = require('../config/key');
 const { apiUrl, limit } = require('../config/config');
 
+const { sanitize } = require('../helpers/sanitize');
+
 exports.home = (req, res) => {
     fetch(`${apiUrl}/trending?api_key=${apiKey}&limit=${limit}`)
     .then((resp) => {
